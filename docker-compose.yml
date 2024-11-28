@@ -1,0 +1,39 @@
+services:
+  caddy:
+    build: 
+      context: ./
+      args:
+       - CADDY_VERSION=v2.8.4
+       - GOLANG_BUILDER_VERSION=1.22.9-alpine3.19
+       - XCADDY_VERSION=v0.4.4
+       - BUILD_ARGS=--with github.com/mholt/caddy-l4
+    ports:
+      - "80:80"    # HTTP
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - CADDY_PLUGINS=http.handlers.reverse_proxy,layer4 # Install layer4 plugin at runtime
+    networks:
+      - caddy_net
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - caddy_net
+    ports:
+      - "5432"
+
+networks:
+  caddy_net:
+
+volumes:
+  caddy_data:
+  caddy_config:
+  postgres_data:
