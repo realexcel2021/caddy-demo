@@ -8,7 +8,7 @@ services:
        - XCADDY_VERSION=v0.4.4
        - BUILD_ARGS=--with github.com/mholt/caddy-l4
     ports:
-      - "80:80"    # HTTP
+      - "80"    # HTTP
     volumes:
       - caddy_data:/data
       - caddy_config:/config
