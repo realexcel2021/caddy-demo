@@ -1,12 +1,13 @@
 services:
   caddy:
-    build: 
-      context: ./
-      args:
-       - CADDY_VERSION=v2.8.4
-       - GOLANG_BUILDER_VERSION=1.22.9-alpine3.19
-       - XCADDY_VERSION=v0.4.4
-       - BUILD_ARGS=--with github.com/mholt/caddy-l4
+    # build: 
+    #   context: ./
+    #   args:
+    #    - CADDY_VERSION=v2.8.4
+    #    - GOLANG_BUILDER_VERSION=1.22.9-alpine3.19
+    #    - XCADDY_VERSION=v0.4.4
+    #    - BUILD_ARGS=--with github.com/mholt/caddy-l4
+    image: sheriffexcel/caddy-demo
     ports:
       - "80"    # HTTP
     volumes:
