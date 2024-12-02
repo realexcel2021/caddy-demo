@@ -9,14 +9,15 @@ services:
     #    - BUILD_ARGS=--with github.com/mholt/caddy-l4
     image: sheriffexcel/caddy-demo
     ports:
-      - "80"    # HTTP
+      - "80:80"    # HTTP
+      - "2019:2019"
     volumes:
       - caddy_data:/data
       - caddy_config:/config
     environment:
       - CADDY_PLUGINS=http.handlers.reverse_proxy,layer4 # Install layer4 plugin at runtime
     networks:
-      - caddy_net
+      - coolify
 
   postgres:
     image: postgres
@@ -27,12 +28,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - caddy_net
+      - coolify
     ports:
       - "5432"
 
 networks:
-  caddy_net:
+  coolify:
+    external: true
 
 volumes:
   caddy_data:
