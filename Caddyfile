@@ -1,13 +1,6 @@
 {
     layer4 {
-        0.0.0.0:80 {
-            route {
-                proxy {
-                    upstream postgres:5432
-                }
-            }
-        }
-        0.0.0.0:443 {
+        :80 {
             route {
                 proxy {
                     upstream postgres:5432
