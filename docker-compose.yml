@@ -9,8 +9,7 @@ services:
     #    - BUILD_ARGS=--with github.com/mholt/caddy-l4
     image: sheriffexcel/caddy-demo
     ports:
-      - "80:80"    # HTTP
-      - "2019:2019"
+      - "80"    # HTTP
     volumes:
       - caddy_data:/data
       - caddy_config:/config
