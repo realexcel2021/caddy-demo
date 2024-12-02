@@ -7,9 +7,9 @@ services:
        - GOLANG_BUILDER_VERSION=1.22.9-alpine3.19
        - XCADDY_VERSION=v0.4.4
        - BUILD_ARGS=--with github.com/mholt/caddy-l4
-    image:  ghcr.io/Timtech4u/caddy-demo:latest
+    image:  ghcr.io/timtech4u/caddy-demo:latest
     ports:
-      - "80:80"    # HTTP
+      - "80"    # HTTP
     volumes:
       - caddy_data:/data
       - caddy_config:/config
