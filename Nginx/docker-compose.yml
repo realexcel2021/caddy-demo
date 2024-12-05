@@ -1,13 +1,16 @@
 services:
   nginx:
     image: sheriffexcel/nginx-demo
-    build: .
+    #image: nginx
+    #build: .
     ports:
-      - "80"
+      - "80:80"
     depends_on:
       - postgres
     networks:
       - coolify
+    # volumes:
+    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
 
   postgres:
     image: postgres
